@@ -1,0 +1,6 @@
+apiVersion: v2
+name: todo
+description: Helm chart the Todo demo app for CASPR
+type: application
+version: latest
+appVersion: latest
