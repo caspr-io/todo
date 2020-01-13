@@ -1,11 +1,9 @@
 #!/bin/bash
 
-# Recreate config file
-rm -rf ./env-config.js
-touch ./env-config.js
-
 # Add assignment
-echo "window._env_ = {" >> ./env-config.js
+cat <<EOJS
+window._appConfig_ = {
+EOJS
 
 # Read each line in .env file
 # Each line represents key=value pairs
@@ -23,7 +21,13 @@ do
   [[ -z $value ]] && value=${varvalue}
 
    # Append configuration property to JS file
-  echo "  $varname: \"$value\"," >> ./env-config.js
+  cat <<EOJS
+  $varname: "$value",
+EOJS
 done < .env
 
-echo "}" >> ./env-config.js
+cat <<EOJS
+}
+EOJS
+
+
