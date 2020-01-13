@@ -13,14 +13,11 @@ up:
 down:
 	@echo -e "${BLUE}Nothing to do"
 
-# Runs the Todo application locally
-.PHONY: run
-run:
-	npm run start
-
-.PHONY: npm-install
-npm-install:
-	npm install
+# Builds JavaScript code
+.PHONY: run test clean
+run: npm/start
+test: npm/test
+clean: npm/clean
 
 # Builds Docker image
 .PHONY: build install
