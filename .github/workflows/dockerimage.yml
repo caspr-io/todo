@@ -7,6 +7,11 @@ jobs:
       - name: Checkout repository
         uses: actions/checkout@v1
 
+      - name: Checkout caspr-io/root from GitLab
+        run: git clone https://gitlab-ci-token:${GITLAB_PAT}@gitlab.com/caspr-io/root ../root
+        env:
+          GITLAB_PAT: ${{secrets.GITLAB_PAT}}
+
       # - name: Ensure can write in repo
       #   run: chmod ugo+w -R pkg
       - name: Build Docker image
