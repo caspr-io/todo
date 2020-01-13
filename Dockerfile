@@ -1,9 +1,9 @@
-FROM node:12.0-alpine as builder
-COPY . /src/todo
-WORKDIR /src/todo
+# FROM node:12.0-alpine as builder
+# COPY . /src/todo
+# WORKDIR /src/todo
 
-RUN npm install
-RUN npm run build
+# RUN npm install
+# RUN npm run build
 
 # ------ END BUILD STAGE ------
 
@@ -11,7 +11,8 @@ FROM nginx:latest
 
 
 # Add application
-COPY --from=builder /src/todo/build /var/www/todo
+# COPY --from=builder /src/todo/build /var/www/todo
+COPY src /var/www/todo
 
 # Add NGINX configuration
 ADD nginx-todo.conf /etc/nginx/conf.d/default.conf
