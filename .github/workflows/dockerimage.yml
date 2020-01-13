@@ -2,7 +2,7 @@
 # GITLAB_PAT to access GitLab to pull gitlab.com/caspr-io/root
 # DOCKER_HUB_PAT to push the Docker image to the Docker Hub
 
-name: Todo app CI
+name: Build and push Docker image for Todo app
 on: [push]
 jobs:
   build:
