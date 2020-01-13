@@ -1,3 +1,7 @@
+# Requires two secrets to be configured:
+# GITLAB_PAT to access GitLab to pull gitlab.com/caspr-io/root
+# DOCKER_HUB_PAT to push the Docker image to the Docker Hub
+
 name: Todo app CI
 on: [push]
 jobs:
@@ -12,15 +16,13 @@ jobs:
         env:
           GITLAB_PAT: ${{secrets.GITLAB_PAT}}
 
-      # - name: Ensure can write in repo
-      #   run: chmod ugo+w -R pkg
       - name: Build Docker image
         run: make build
 
       - name: Login to Docker Hub
         uses: azure/docker-login@v1
         with:
-          login-server: index.docker.io
+          # login-server: index.docker.io
           username: vpartington
           password: ${{ secrets.DOCKER_HUB_PAT }}
 
