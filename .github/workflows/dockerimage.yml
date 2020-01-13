@@ -1,0 +1,18 @@
+name: Todo app CI
+on: [push]
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v1
+      - name: Ensure can write in repo
+        run: chmod ugo+w -R pkg
+      - name: Make docker image
+        run: make build
+      - name: Docker Login
+        uses: azure/docker-login@v1
+        with:
+          username: vpartington
+          password: ${{ secrets.DOCKER_HUB_PAT }}
+      - name: Push docker image
+        run: make docker/push
