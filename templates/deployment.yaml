@@ -17,9 +17,9 @@ spec:
         imagePullPolicy: IfNotPresent
         env:
         - name: ENABLE_COMPLETED_FILTER
-          value: {{ .Values.enableCompletedFilter }}
+          value: "{{ .Values.env.enableCompletedFilter }}"
         - name: ENABLE_OVERDUE_FILTER
-          value: {{ .Values.enableOverdueFilter }}
+          value: "{{ .Values.env.enableOverdueFilter }}"
         ports:
         - containerPort: {{ .Values.service.internalPort }}
         livenessProbe:
