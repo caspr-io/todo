@@ -26,4 +26,4 @@ COPY .env /var/www/todo
 RUN chmod +x /var/www/todo/generate-app-config.js.sh
 
 # Start Nginx server recreating env-config.js
-CMD ["/bin/bash", "-c", "/var/www/todo/generate-app-config.js.sh && nginx -g \"daemon off;\""]
+CMD ["/bin/bash", "-c", "./generate-app-config.js.sh > app-config.js && nginx -g \"daemon off;\""]
