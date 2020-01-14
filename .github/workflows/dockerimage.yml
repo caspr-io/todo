@@ -22,7 +22,6 @@ jobs:
       - name: Login to Docker Hub
         uses: azure/docker-login@v1
         with:
-          # login-server: index.docker.io
           username: vpartington
           password: ${{ secrets.DOCKER_HUB_PAT }}
 
