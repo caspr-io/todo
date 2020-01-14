@@ -12,3 +12,4 @@ replicaCount: 1
 env:
   enableCompletedFilter: false
   enableOverdueFilter: true
+  upgradeLink: /upgraden

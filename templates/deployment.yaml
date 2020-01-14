@@ -20,6 +20,8 @@ spec:
           value: "{{ .Values.env.enableCompletedFilter }}"
         - name: ENABLE_OVERDUE_FILTER
           value: "{{ .Values.env.enableOverdueFilter }}"
+        - name: UPGRADE_LINK
+          value: "{{ .Values.env.upgradeLink }}"
         ports:
         - containerPort: {{ .Values.service.internalPort }}
         livenessProbe:

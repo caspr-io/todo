@@ -8,6 +8,7 @@ function Header({ filter, addItem, setFilter }) {
 
   const enableOverdueFilter = window['_appConfig_'].ENABLE_OVERDUE_FILTER === "true"
   const enableCompletedFilter = window['_appConfig_'].ENABLE_COMPLETED_FILTER === "true"
+  const upgradeLink = window['_appConfig_'].UPGRADE_LINK
 
   const selectOverdueFilter = () => setFilter({ ...filter, overdueOnly: true });
   const unSelectOverdueFilter = () => setFilter({ ...filter, overdueOnly: false });
@@ -43,6 +44,10 @@ function Header({ filter, addItem, setFilter }) {
             unSelect={unSelectCompleteFilter}
             disabled={!enableCompletedFilter}
           />
+          {
+            upgradeLink &&
+            <a href={upgradeLink}>Upgrade!</a>
+          }
         </div>
       </nav>
       {adding && <NewItem cancel={() => setAdding(false)} add={addNewItem} />}
