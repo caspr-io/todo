@@ -58,7 +58,7 @@
 
 .checkbox-field .checkmark.disabled {
     cursor: default;
-    background-color: transparent;
+    background-color: lightgrey;
 }
 
 .checkbox-field .checkmark:after {
@@ -86,6 +86,11 @@
 .checkbox-field .label-text {
     margin-left: 10px;
     cursor: pointer;
+}
+
+.checkbox-field .label-text.disabled {
+  cursor: default;
+  color: grey;
 }
 
 .add-item-form {

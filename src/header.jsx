@@ -29,22 +29,20 @@ function Header({ filter, addItem, setFilter }) {
               Add new item
             </button>
           }
-          {enableOverdueFilter &&
-            <Checkbox
-              label="Overdue items only"
-              selected={filter.overdueOnly}
-              select={selectOverdueFilter}
-              unSelect={unSelectOverdueFilter}
-            />
-          }
-          {enableCompletedFilter &&
-            <Checkbox
-              label="Include complete items"
-              selected={filter.includeComplete}
-              select={selectCompleteFilter}
-              unSeect={unSelectCompleteFilter}
-            />
-          }
+          <Checkbox
+            label="Overdue items only"
+            selected={filter.overdueOnly}
+            select={selectOverdueFilter}
+            unSelect={unSelectOverdueFilter}
+            disabled={!enableOverdueFilter}
+          />
+          <Checkbox
+            label="Include complete items"
+            selected={filter.includeComplete}
+            select={selectCompleteFilter}
+            unSelect={unSelectCompleteFilter}
+            disabled={!enableCompletedFilter}
+          />
         </div>
       </nav>
       {adding && <NewItem cancel={() => setAdding(false)} add={addNewItem} />}
