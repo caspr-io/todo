@@ -6,7 +6,7 @@ include ${ROOTPROJECT}/include.mk
 
 # Targets for cluster/up and cluster/teardown
 .PHONY: up down
-up: helm/push
+up: kube/helm/push
 down:
 
 # Builds JavaScript code
@@ -19,4 +19,3 @@ clean: npm/clean
 .PHONY: build install
 build: docker/build
 install: build docker/push
-
