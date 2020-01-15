@@ -1,15 +1,20 @@
 apiVersion: apps/v1
 kind: Deployment
 metadata: {{ $fullname := printf "%s-%s" .Release.Name .Chart.Name | trunc 63 | trimSuffix "-" }}
-  name: {{ $fullname }}
+  name:  {{ template "todo.fullname" . }}
   labels:
-    chart: "{{ .Chart.Name }}-{{ .Chart.Version | replace "+" "_" }}"
+{{ include "todo.labels" . | indent 4 }}
 spec:
   replicas: {{ default 1 .Values.replicaCount | int }}
+  selector:
+    matchLabels:
+      app.kubernetes.io/name: {{ include "todo.name" . }}
+      app.kubernetes.io/instance: {{ .Release.Name }}
   template:
     metadata:
       labels:
-        app: {{ $fullname }}
+        app.kubernetes.io/name: {{ include "todo.name" . }}
+        app.kubernetes.io/instance: {{ .Release.Name }}
     spec:
       containers:
       - name: {{ .Chart.Name }}
@@ -32,6 +37,3 @@ spec:
           httpGet:
             path: /
             port: {{ .Values.service.internalPort }}
-  selector:
-    matchLabels:
-     app: {{ $fullname }}
