@@ -23,7 +23,8 @@ ADD nginx-todo.conf /etc/nginx/conf.d/default.conf
 # Add script to generate runtime environment
 COPY generate-app-config.js.sh /var/www/todo
 COPY .env /var/www/todo
-RUN chmod +x /var/www/todo/generate-app-config.js.sh
+RUN apk add --update --no-cache bash && \
+  chmod +x /var/www/todo/generate-app-config.js.sh
 
 # Install helm and the helm push plugin
 ENV HELM_VERSION=3.1.1
