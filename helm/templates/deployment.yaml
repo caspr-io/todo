@@ -27,7 +27,7 @@ spec:
           value: "{{ .Values.env.enableOverdueFilter }}"
         - name: UPGRADE_LINK
           value: "{{ .Values.env.upgradeLink }}"
-{{- if .Values.subscription }}
+{{- if hasKey .Values "subscription" }}
         - name: TENANT_NAME
           value: '{{ .Values.subscription.tenantobj.name }}'
         - name: TENANT_ID

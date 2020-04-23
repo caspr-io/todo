@@ -2,5 +2,5 @@ apiVersion: v2
 name: todo
 description: Helm chart the Todo demo app for CASPR
 type: application
-version: v20200115
+version: v20200423
 appVersion: latest
