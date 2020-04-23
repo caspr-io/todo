@@ -9,6 +9,7 @@ function Header({ filter, addItem, setFilter }) {
   const enableOverdueFilter = window['_appConfig_'].ENABLE_OVERDUE_FILTER === "true"
   const enableCompletedFilter = window['_appConfig_'].ENABLE_COMPLETED_FILTER === "true"
   const upgradeLink = window['_appConfig_'].UPGRADE_LINK
+  const tenantName = window['_appConfig_'].TENANT_NAME
 
   const selectOverdueFilter = () => setFilter({ ...filter, overdueOnly: true });
   const unSelectOverdueFilter = () => setFilter({ ...filter, overdueOnly: false });
@@ -23,7 +24,7 @@ function Header({ filter, addItem, setFilter }) {
   return (
     <header>
       <nav className="navbar navbar-light bg-light">
-        <span className="navbar-brand">Todo list</span>
+        <span className="navbar-brand">Todo list - registered to {tenantName}</span>
         <div style={{ flexDirection: "inherit", display: "flex", alignItems: "center" }}>
           {!adding &&
             <button type="button" className="btn btn-link" onClick={() => setAdding(true)}>
